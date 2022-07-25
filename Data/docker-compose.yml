@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+
+  db:
+    image: postgres:11
+    ports:
+      - 5432:5432
+    #expose:
+      # - 3306
+    restart: always
+    environment:
+    #  - POSTGRES_DB=AMOC4.4.0
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ../data:/var/lib/postgresql/data
+    networks:
+      - backend
+  
+networks:
+    backend:
+      name: backend
+      driver: bridge
